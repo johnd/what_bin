@@ -1,0 +1,18 @@
+{
+  "cwd": "/Users/john/Dropbox/Code/what_bin",
+  "type": [
+    "pwa"
+  ],
+  "name": "What Bin",
+  "framework": "core",
+  "template": "single-view",
+  "bundler": "vite",
+  "cssPreProcessor": false,
+  "theming": {
+    "customColor": false,
+    "color": "#007aff",
+    "darkMode": false,
+    "iconFonts": true
+  },
+  "customBuild": false
+}
