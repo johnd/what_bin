@@ -1,0 +1,17 @@
+Developer notes:
+
+To get Authorization header:
+
+curl 'https://www.fife.gov.uk/api/citizen?preview=false&locale=en' -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:105.0) Gecko/20100101 Firefox/105.0' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Content-Type: application/json' -H 'X-Requested-With: XMLHttpRequest' -H 'Connection: keep-alive' -H 'Referer: https://www.fife.gov.uk/services/bin-calendar' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' -s -D - | grep Authorization:
+
+
+To get list of properties:
+
+curl 'https://www.fife.gov.uk/api/widget?action=propertysearch&actionedby=ps_3SHSN93&loadform=true&access=citizen&locale=en' -X POST -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:105.0) Gecko/20100101 Firefox/105.0' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Accept-Language: en-GB,en;q=0.5'  -H 'Content-Type: application/json' -H 'Authorization: kdf-a7ad8e16-de62-43cf-a61c-610ced11d39f' -H 'X-Requested-With: XMLHttpRequest' -H 'Origin: https://www.fife.gov.uk' -H 'Connection: keep-alive' -H 'Referer: https://www.fife.gov.uk/services/bin-calendar' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' --data-raw '{"name":"bin_calendar","data":{"postcode":"ky11 1db"},"email":"","caseid":"","xref":"","xref1":"","xref2":""}'
+
+To get bins:
+
+curl 'https://www.fife.gov.uk/api/custom?action=powersuite_bin_calendar_collections&actionedby=bin_calendar&loadform=true&access=citizen&locale=en' -X POST -H 'User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:105.0) Gecko/20100101 Firefox/105.0' -H 'Accept: application/json, text/javascript, */*; q=0.01' -H 'Accept-Language: en-GB,en;q=0.5' -H 'Content-Type: application/json' -H 'Authorization: kdf-d7f792ca-1134-46d8-ae88-062d234721e4' -H 'X-Requested-With: XMLHttpRequest' -H 'Origin: https://www.fife.gov.uk' -H 'Connection: keep-alive' -H 'Referer: https://www.fife.gov.uk/services/bin-calendar' -H 'Sec-Fetch-Dest: empty' -H 'Sec-Fetch-Mode: cors' -H 'Sec-Fetch-Site: same-origin' --data-raw '{"name":"bin_calendar","data":{"uprn":"320126331"},"email":"","caseid":"","xref":"","xref1":"","xref2":""}'
+
+
+Once someone has selected their address, all we'll need is the house 'value'/uprn, which we can save on the device, and future requests will just be to get an auth header and then the data.
